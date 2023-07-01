@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <title>Infinisweeper</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    <script type="module" src="src/gui.ts"></script>
+  </head>
+  <body>
+    <level></level>
+    <hud class="top left">
+      <entry no-label data-game-attribute="coordinates">0:0</entry>
+      <entry data-game-attribute="Zoom">1</entry>
+    </hud>
+    <hud class="top right">
+      <entry data-game-attribute="Score">0</entry>
+      <entry data-game-attribute="High Score">0</entry>
+      <entry data-game-attribute="Streak">0</entry>
+    </hud>
+    <hud class="bottom right auto-size" data-click="toggle" data-target="#settings">
+      <span>⚙</entry>
+    </hud>
+    <popup id="settings" class="hidden" data-click="toggle" data-target="#settings">
+      <hud class="center" data-click="capture">
+        <h3>Settings</h3>
+        <div>
+          <button data-click="reset">Reset</button>
+        </div>
+        <div>
+          <button data-click="toggleDarkMode">Toggle Dark Mode</button>
+        </div>
+      </hud>
+    </popup>
+  </body>
+</html>
