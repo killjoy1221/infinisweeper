@@ -8,23 +8,24 @@ import "./zooming";
 import "./input";
 
 const gameAttributes = {
-    score: getScore,
-    high_score: getHighScore,
-    streak: getStreak,
+    score: () => String(getScore),
+    high_score: () => String(getHighScore),
+    streak: () => String(getStreak),
     zoom() {
-        return gameState.viewport.zoom;
+        return String(gameState.viewport.zoom);
     },
     map_coordinates() {
         return `MapX: ${gameState.viewport.x} MapY: ${gameState.viewport.y}`;
     },
     coordinates() {
-        return gameState.focusedCell ? `X: ${gameState.focusedCell.globalX} Y: ${gameState.focusedCell.globalY}` : undefined;
+        return gameState.focusedCell ? `X: ${gameState.focusedCell.globalX} Y: ${gameState.focusedCell.globalY}` : "";
     }
 }
 
 setInterval(() => {
     document.querySelectorAll<HTMLElement>('hud entry[data-game-attribute]').forEach(entry => {
-        const attribute = gameAttributes[entry.dataset.gameAttribute!.toLowerCase().replace(' ', '_')];
+        const attr = entry.dataset.gameAttribute!.toLowerCase().replace(' ', '_') as keyof typeof gameAttributes
+        const attribute = gameAttributes[attr];
         if (attribute) {
             entry.innerText = attribute();
         }
