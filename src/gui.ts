@@ -8,9 +8,9 @@ import "./zooming";
 import "./input";
 
 const gameAttributes = {
-    score: () => String(getScore),
-    high_score: () => String(getHighScore),
-    streak: () => String(getStreak),
+    score: () => String(getScore()),
+    high_score: () => String(getHighScore()),
+    streak: () => String(getStreak()),
     zoom() {
         return String(gameState.viewport.zoom);
     },
